@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<data version="1.23.0">
+  <trigger type="shortcut">
+    <useDefaultName>true</useDefaultName>
+    <name>Shortcut: SOS</name>
+    <enabled>true</enabled>
+    <title>SOS</title>
+  </trigger>
+  <condition type="expression">
+    <useDefaultName>true</useDefaultName>
+    <name>Expression: global_sos&lt;10</name>
+    <expression>global_sos&lt;10</expression>
+  </condition>
+  <condition type="expression">
+    <useDefaultName>true</useDefaultName>
+    <name>Expression: 3&lt;global_sos &amp;&amp; global_sos&lt;7</name>
+    <expression>3&lt;global_sos &amp;&amp; global_sos&lt;7</expression>
+  </condition>
+  <condition type="expression">
+    <useDefaultName>true</useDefaultName>
+    <name>Expression: global_sos!=0</name>
+    <expression>global_sos!=0</expression>
+  </condition>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_sos=1</name>
+    <script>global_sos=1</script>
+  </action>
+  <action type="sleep">
+    <useDefaultName>true</useDefaultName>
+    <name>Sleep: 0.5s (keep device awake)</name>
+    <duration>0.5s</duration>
+    <keepDeviceAwake>true</keepDeviceAwake>
+  </action>
+  <action type="flashlight">
+    <useDefaultName>true</useDefaultName>
+    <name>Flashlight: Off</name>
+    <enable>false</enable>
+  </action>
+  <action type="flashlight">
+    <useDefaultName>true</useDefaultName>
+    <name>Flashlight: On</name>
+    <enable>true</enable>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_sos=global_sos+1</name>
+    <script>global_sos=global_sos+1</script>
+  </action>
+  <action type="script">
+    <useDefaultName>true</useDefaultName>
+    <name>Script: global_sos=0</name>
+    <script>global_sos=0</script>
+  </action>
+  <flow type="flow">
+    <name>Flashlight SOS</name>
+    <group>In Development</group>
+    <enabled>true</enabled>
+    <lastExecutionStartTime>1407075153656</lastExecutionStartTime>
+    <lastExecutionEndTime>1407075153700</lastExecutionEndTime>
+    <executionPolicy>STOP</executionPolicy>
+    <emergencyStopCount>360</emergencyStopCount>
+    <conditioncontainer id="t1" x="70.0" y="122.5">Expression: global_sos&lt;10</conditioncontainer>
+    <actioncontainer id="t2" x="70.0" y="647.5">Flashlight: On</actioncontainer>
+    <actioncontainer id="t3" x="70.0" y="-52.5">Script: global_sos=1</actioncontainer>
+    <triggercontainer id="t4" x="70.00001" y="-472.5">
+      <trigger>Shortcut: SOS</trigger>
+    </triggercontainer>
+    <conditioncontainer id="t5" x="70.00001" y="-262.5">Expression: global_sos!=0</conditioncontainer>
+    <conditioncontainer id="t6" x="69.99999" y="297.5">Expression: 3&lt;global_sos &amp;&amp; global_sos&lt;7</conditioncontainer>
+    <actioncontainer id="t7" x="70.0" y="472.5">Sleep: 0.5s (keep device awake)</actioncontainer>
+    <conditioncontainer id="t8" x="70.0" y="822.5">Expression: 3&lt;global_sos &amp;&amp; global_sos&lt;7</conditioncontainer>
+    <actioncontainer id="t9" x="280.0" y="122.5">Script: global_sos=global_sos+1</actioncontainer>
+    <actioncontainer id="t10" x="280.00006" y="822.5">Flashlight: Off</actioncontainer>
+    <actioncontainer id="t11" x="280.00006" y="997.5002">Sleep: 0.5s (keep device awake)</actioncontainer>
+    <actioncontainer id="t12" x="280.00003" y="-262.5">Script: global_sos=0</actioncontainer>
+    <actioncontainer id="t13" x="490.0" y="-262.5">Flashlight: Off</actioncontainer>
+    <connection from="t1" to="t3" type="FALSE" sourcePosition="WEST" targetPosition="WEST" />
+    <connection from="t1" to="t6" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t2" to="t8" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t3" to="t1" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t4" to="t5" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t3" type="FALSE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t5" to="t12" type="TRUE" sourcePosition="EAST" targetPosition="WEST" />
+    <connection from="t6" to="t7" type="TRUE" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t6" to="t2" type="FALSE" sourcePosition="EAST" targetPosition="EAST" />
+    <connection from="t7" to="t2" type="NORMAL" sourcePosition="SOUTH" targetPosition="NORTH" />
+    <connection from="t8" to="t11" type="TRUE" sourcePosition="SOUTH" targetPosition="WEST" />
+    <connection from="t8" to="t10" type="FALSE" sourcePosition="EAST" targetPosition="WEST" />
+    <connection from="t9" to="t1" type="NORMAL" sourcePosition="WEST" targetPosition="EAST" />
+    <connection from="t10" to="t9" type="NORMAL" sourcePosition="NORTH" targetPosition="SOUTH" />
+    <connection from="t11" to="t10" type="NORMAL" sourcePosition="NORTH" targetPosition="SOUTH" />
+    <connection from="t12" to="t13" type="NORMAL" sourcePosition="EAST" targetPosition="WEST" />
+  </flow>
+</data>
