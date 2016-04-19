@@ -7,7 +7,7 @@ For now testing the viability of Github being a hub for sharing the flows of Aut
 
 See the **[wiki](https://github.com/Pendrokar/AutomagicCommunityFlows/wiki)** page for an example list of flows.
 
-Terminology:
+## Terminology:
 
 App - Multiple flows that act in unison may be called (Automagic) Apps
 
@@ -16,3 +16,6 @@ App categorization:
 * Hybrid - Apps that store/cache information received from the Internet
 * Online - Apps specifically meant to be used with a connection to the Internet
 * Offline - Apps that never connect to the internet
+
+## Discuss:
+Discussion thread - http://automagic4android.com/forum/viewtopic.php?f=4&t=3772
